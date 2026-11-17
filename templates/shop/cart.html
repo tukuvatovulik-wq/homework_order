@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Корзина{% endblock %}
+{% block content %}<h1>Корзина</h1>
+{% if items %}<div class="card">{% for item in items %}<div class="cart-row"><div>
+<strong>{{ item.product.name }}</strong><div class="muted">{{ item.product.price }} сом × {{ item.quantity }} = {{ item.subtotal }} сом</div>
+</div><div class="cart-actions"><span>Количество: {{ item.quantity }}</span>
+<form method="post" action="{% url 'shop:remove_one' item.product.pk %}">{% csrf_token %}<button class="button-secondary" type="submit">Убрать 1</button></form>
+</div></div>{% endfor %}<h2 class="total">Итого: {{ total }} сом</h2></div>
+<section class="order-form card"><h2>Оформление заказа</h2>
+<form method="post" action="{% url 'shop:create_order' %}">{% csrf_token %}{{ form.non_field_errors }}
+<div class="form-field"><label for="{{ form.customer_name.id_for_label }}">Имя</label>{{ form.customer_name }}{{ form.customer_name.errors }}</div>
+<div class="form-field"><label for="{{ form.address.id_for_label }}">Адрес</label>{{ form.address }}{{ form.address.errors }}</div>
+<div class="form-field"><label for="{{ form.phone.id_for_label }}">Телефон</label>{{ form.phone }}{{ form.phone.errors }}</div>
+<button type="submit">Оформить заказ</button></form></section>
+{% else %}<div class="card"><p>Корзина пуста.</p><a href="{% url 'shop:product_list' %}">Перейти к товарам</a></div>{% endif %}
+{% endblock %}

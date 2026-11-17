@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block title %}Заказ оформлен{% endblock %}
+{% block content %}<div class="card"><h1>Заказ №{{ order.pk }} оформлен</h1>
+<p>Спасибо, {{ order.customer_name }}! Ваш заказ сохранён.</p><h2>Состав заказа</h2><ul>
+{% for item in order.items.all %}<li>{{ item.product.name }} — {{ item.quantity }} шт.</li>{% endfor %}
+</ul><a href="{% url 'shop:product_list' %}">Вернуться в каталог</a></div>{% endblock %}

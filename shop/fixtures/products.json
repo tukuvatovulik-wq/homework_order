@@ -1,0 +1,46 @@
+[
+  {
+    "model": "shop.category",
+    "pk": 1,
+    "fields": {
+      "name": "Электроника"
+    }
+  },
+  {
+    "model": "shop.category",
+    "pk": 2,
+    "fields": {
+      "name": "Аксессуары"
+    }
+  },
+  {
+    "model": "shop.product",
+    "pk": 1,
+    "fields": {
+      "name": "Наушники",
+      "category": 1,
+      "description": "Проводные наушники для повседневного использования.",
+      "price": "1200.00"
+    }
+  },
+  {
+    "model": "shop.product",
+    "pk": 2,
+    "fields": {
+      "name": "Мышь",
+      "category": 1,
+      "description": "Компьютерная мышь.",
+      "price": "850.00"
+    }
+  },
+  {
+    "model": "shop.product",
+    "pk": 3,
+    "fields": {
+      "name": "Коврик для мыши",
+      "category": 2,
+      "description": "Коврик для рабочего стола.",
+      "price": "350.00"
+    }
+  }
+]

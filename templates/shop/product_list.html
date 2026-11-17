@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Товары{% endblock %}
+{% block content %}<h1>Каталог товаров</h1>
+{% if products %}<div class="product-grid">{% for product in products %}<article class="card">
+<div class="product-category">{{ product.category.name }}</div><h2>{{ product.name }}</h2>
+{% if product.description %}<p>{{ product.description }}</p>{% endif %}
+<div class="price">{{ product.price }} сом</div>
+<form method="post" action="{% url 'shop:add_to_cart' product.pk %}">{% csrf_token %}<button type="submit">Добавить в корзину</button></form>
+</article>{% endfor %}</div>{% else %}<p>Пока товаров нет. Добавьте их через админку.</p>{% endif %}
+{% endblock %}
